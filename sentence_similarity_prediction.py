@@ -17,9 +17,8 @@ subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
 
 print("USER",os.listdir("/usr"))
 print("LIB",os.listdir("/usr/lib"))
-for p in os.listdir("/usr/lib"):
-    if os.path.isdir("/usr/lib/" + p):
-        print(os.listdir("/usr/lib/" + p))
+print("DPKG",os.listdir("/usr/lib/dpkg"))
+print("APT",os.listdir("/usr/lib/apt"))
 
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
