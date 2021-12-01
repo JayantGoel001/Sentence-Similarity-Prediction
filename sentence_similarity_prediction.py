@@ -12,9 +12,8 @@ import subprocess
 
 path = os.getcwd()
 
-subprocess.run(["apt-get", "update", "-qq"])
-subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
-print(os.environ["JAVA_HOME"])
+subprocess.run(["sudo","apt-get", "update", "-qq"])
+subprocess.run(["sudo","apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
 
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
