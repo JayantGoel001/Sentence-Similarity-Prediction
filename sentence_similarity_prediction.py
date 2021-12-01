@@ -12,8 +12,8 @@ import subprocess
 
 path = os.getcwd()
 
-subprocess.run(["apt-get", "update", "-qq"])
-subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
+print("S1",subprocess.run(["apt-get", "update", "-qq"]))
+print("S2",subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"]))
 
 print("LIB",os.listdir("/usr"))
 for p in os.listdir("/usr"):
