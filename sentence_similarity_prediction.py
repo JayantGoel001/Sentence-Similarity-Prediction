@@ -8,9 +8,9 @@ Original file is located at
 """
 
 import os
-os.system("su -")
-os.system("apt-get install sudo")
-os.system("exit")
+import sys
+
+print(sys.platform)
 os.system("sudo apt-get update -qq")
 os.system("sudo apt-get install -y openjdk-8-jdk-headless -qq")
 
