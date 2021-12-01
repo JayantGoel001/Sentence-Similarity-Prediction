@@ -8,27 +8,33 @@ Original file is located at
 """
 
 import os
-!apt-get update -qq > /dev/null   
-!apt-get install -y openjdk-8-jdk-headless -qq > /dev/null
+import subprocess
+subprocess.run(["apt-get update -qq"])
+subprocess.run(["apt-get install -y openjdk-8-jdk-headless -qq"])
+
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
-!pip install nlu pyspark==2.4.7 > /dev/null   
-!pip install flask_ngrok
+
 import nlu
 
 from flask import Flask,request,jsonify
-from flask_ngrok import run_with_ngrok
 import json
 import math
 import requests
 
-app = Flask(__name__)
-run_with_ngrok(app)
+app = Flask("Sentence Similarity")
 
 API = "https://codeupmajor.herokuapp.com/api/discussion/predictions"
 
 multi_pipe = None
 col_names = ['sentence_embedding_bert','sentence_embedding_electra', 'sentence_embedding_use']
+
+def dot(A,B): 
+    return (sum(a*b for a,b in zip(A,B)))
+
+def cosine_similarity(a,b):
+    return dot(a,b) / ( math.sqrt(dot(a,a) * dot(b,b)) )
+
 
 @app.route("/load-api")
 def loadAPI():
@@ -55,12 +61,6 @@ def genearatePredictions():
         return { "predictions" : response ,"status" : 201},201
     else:
         return { "error" :"ERROR" ,"status" : 500}, 500
-
-def dot(A,B): 
-    return (sum(a*b for a,b in zip(A,B)))
-
-def cosine_similarity(a,b):
-    return dot(a,b) / ( math.sqrt(dot(a,a) * dot(b,b)) )
 
 @app.route("/get-similar-questions",methods=['GET','POST'])
 def getSimilarQuestions():
