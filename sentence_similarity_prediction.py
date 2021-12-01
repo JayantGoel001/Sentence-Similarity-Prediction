@@ -80,5 +80,3 @@ def getSimilarQuestions():
     else:
         return { "status" : 500,"error" :"ERROR"}, 500
 
-app.run()
-

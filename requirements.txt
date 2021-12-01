@@ -1,2 +1,4 @@
 nlu
 pyspark==2.4.7
+flask
+gunicorn
