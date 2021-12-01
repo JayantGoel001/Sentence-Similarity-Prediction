@@ -8,12 +8,9 @@ Original file is located at
 """
 
 import os
-import subprocess
 
-path = os.getcwd()
-
-subprocess.run(["sudo","apt-get", "update", "-qq"])
-subprocess.run(["sudo","apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
+os.system("apt-get update -qq")
+os.system("!apt-get install -y openjdk-8-jdk-headless -qq")
 
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
