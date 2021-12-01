@@ -11,24 +11,14 @@ import os
 import subprocess
 
 path = os.getcwd()
-if not os.path.isdir(path + "/usr"):
-    os.mkdir(path+"/usr")
-
-path += "/usr"
-
-if not os.path.isdir(path + "/lib"):
-    os.mkdir(path+"/lib")
-
-path += "/lib"
-
-if not os.path.isdir(path + "/jvm"):
-    os.mkdir(path+"/jvm")
-
-path += "/jvm"
-
 
 subprocess.run(["apt-get", "update", "-qq"])
 subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
+
+print(os.listdir(path))
+print(os.listdir(path+"/usr"))
+print(os.listdir(path+"/usr/lib"))
+print(os.listdir(path+"/usr/lib/jvm"))
 
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
