@@ -10,6 +10,23 @@ Original file is located at
 import os
 import subprocess
 
+path = os.getcwd()
+if not os.path.isdir(path + "/usr"):
+    os.mkdir(path+"/usr")
+
+path += "/usr"
+
+if not os.path.isdir(path + "/lib"):
+    os.mkdir(path+"/lib")
+
+path += "/lib"
+
+if not os.path.isdir(path + "/jvm"):
+    os.mkdir(path+"/jvm")
+
+path += "/jvm"
+
+
 subprocess.run(["apt-get", "update", "-qq"])
 subprocess.run(["apt-get","install", "-y", "openjdk-8-jdk-headless", "-qq"])
 
