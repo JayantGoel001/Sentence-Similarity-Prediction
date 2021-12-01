@@ -36,7 +36,7 @@ def cosine_similarity(a,b):
 def loadAPI():
     try:
         global multi_pipe
-        multi_pipe = nlu.load('en.embed_sentence.electra embed_sentence.bert')
+        multi_pipe = nlu.load('use en.embed_sentence.electra embed_sentence.bert')
         return {"status" : 200},200
     except:
         return {"status" : 500},500
