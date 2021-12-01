@@ -11,7 +11,8 @@ import os
 #os.system("apt-get update -qq")
 #os.system("apt-get install -y openjdk-8-jdk-headless -qq")
 
-print(os.listdir(os.getcwd()+"/.apt"))
+print(os.listdir(os.getcwd()+"/.apt/usr"))
+print(os.listdir(os.getcwd()+"/.apt/usr/lib"))
 
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/java-8-openjdk-amd64"
 os.environ["PATH"] = os.environ["JAVA_HOME"] + "/bin:" + os.environ["PATH"]
